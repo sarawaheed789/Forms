@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Student Form</title>
+</head>
+<body>
+
+    <!--Menus-->
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html.html">Registration Form</a></li>
+            <li><a href="student_form.html">Student Form</a></li>
+            <li><a href="calculator.html">Calculator</a></li>
+            <li><a href="min_max.html">Min & Max</a></li>
+            <li><a href="table_number.html">Table</a></li>
+        </ul>
+    </nav>
+  
+
+    <!--Calculator-->
+    <div class="form-container">
+        <h1 style="text-align: center;">Student Form</h1>
+        <form name="form" method="post" action="calculator.html" onsubmit="return checkValue();">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>First Name*</label>
+                    <input type="text" name="first_name" id="uname" placeholder="Enter first Name" maxlength="15" onkeypress="return chr(event);">
+                </div>
+                <div class="form-group">   
+                    <label>Last Name*</label>
+                    <input type="text" name="last_name" placeholder="Enter last Name" maxlength="15" onkeypress="return chr(event);">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="text" name="user_number" placeholder="Enter Number" maxlength="11" onkeypress="return num(event);">
+                </div>
+                <div class="form-group">   
+                    <label>Roll Number</label>
+                    <input type="text" name="rollnumber" id="rollNumber" placeholder="Enter RollNumber" onkeypress="return roll(event);">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Occupation*</label>
+                    <select name="occupations" id="occupation">
+                        <option value="">-- Select Operation --</option>
+                        <option value="student">Student</option>
+                        <option value="teacher">Teacher</option>
+                        <option value="businessman">Businessman</option>
+                        <option value="businessman">Doctor</option>
+                        <option value="businessman">Engineer</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group chk">
+                  <label><b>Gender</b></label>
+                  <div class="gender-options">
+                    <label><input type="radio" name="gender" value="male"> Male</label>
+                    <label><input type="radio" name="gender" value="female"> Female</label>
+                  </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group chk">
+                  <label><b>Skills</b></label><br>
+                  <label><input type="checkbox" name="skills" value="HTML"> HTML</label>
+                  <label><input type="checkbox" name="skills" value="CSS"> CSS</label>
+                  <label><input type="checkbox" name="skills" value="JavaScript"> JS</label>
+                  <label><input type="checkbox" name="skills" value="PHP"> PHP</label>
+                </div>
+            </div>          
+            <div class="form-row btn">
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button> 
+                <button type="button" onclick="return checkValue();">Submit</button> 
+            </div>        
+        </form>
+        <br>
+    </div>
+    <script>
+        function checkValue(){
+            fname = document.form.first_name.value;
+            lname = document.form.last_name.value;
+            number = document.form.user_number.value;
+            feild = document.form.occupations.value;
+
+            if(fname === "" || lname=== "" || number === "" || feild === ""){
+                alert("Enter Required Input");
+                return false;
+            }
+            alert("Successfully Submit");
+        }
+        function num(p){
+            ascii=p.keyCode;
+            if(ascii >= 48 && ascii <= 57){
+                return true;
+            }
+            else{
+                alert("Wrong credentails");
+                return false;
+            }
+        }
+        function chr(e) {
+            ascii = e.keyCode;
+            //alert(ascii);
+            if(((ascii >= 65) && (ascii <= 90)) || ((ascii >= 97) && (ascii <= 120))){
+                return true;
+            }
+            else{
+                alert("Wrong Value");
+                return false; 
+            }
+        }
+        function roll(r){
+            keys=r.keyCode;
+            if(keys >= 48 && keys <= 57){
+                if (document.getElementById("rollNumber").value.length >= 4) {
+                alert("Roll number must be 4 digits only.");
+                return false;
+                }
+                return true;
+            }
+            else{
+                alert("Only numbers are allowed");
+                return false;
+            } 
+        }
+    </script>
+</body>
+</html>
