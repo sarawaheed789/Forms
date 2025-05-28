@@ -16,7 +16,6 @@
     </nav>
 
     <!--Registration Form-->
-
     <div class="form-container">
         <h1 style="text-align: center;">Registration Form</h1>
         <form name="form" method="post" action="" onsubmit="return checkValue();">
@@ -32,95 +31,81 @@
             </div>
             <div class="form-row">
                 <div class="form-group">   
-                    <label>Email</label>
-                    <input type="email" name="email" id="email" placeholder="Enter your email" onkeypress="return roll(event);">
+                    <label>Email*</label>
+                    <input type="email" name="email" id="email" placeholder="Enter your email">
                 </div>
                 <div class="form-group">
-                    <label>Phone Number</label>
+                    <label>Phone Number*</label>
                     <input type="text" name="user_number" placeholder="Enter your number" maxlength="11" onkeypress="return num(event);">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group">   
-                    <label>Password</label>
-                    <input type="password" name="password" id="email" placeholder="Enter your password">
+                    <label>Password*</label>
+                    <input type="password" name="password" placeholder="Enter your password">
                 </div>
                 <div class="form-group">
-                    <label>Confirm Password</label>
-                    <input type="password" name="confirm_password" placeholder="Confirm your number" maxlength="11">
+                    <label>Confirm Password*</label>
+                    <input type="password" name="confirm_password" placeholder="Confirm your password">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group chk">
-                  <label><b>Gender</b></label>
+                  <label><b>Gender*</b></label>
                   <div class="gender-options">
                     <label><input type="radio" name="gender" value="male"> Male</label>
                     <label><input type="radio" name="gender" value="female"> Female</label>
                     <label><input type="radio" name="gender" value="other"> Prefer not to say</label>
                   </div>
                 </div>
-              </div>           
+            </div>           
             <div class="form-row btn">
-                <button type="button" onclick="checkValue();">Register</button>
+                <button type="submit">Register</button>
             </div>        
         </form>
-        <br>
     </div>
     <script>
         function checkValue(){
-            fname = document.form.first_name.value;
-            lname = document.form.last_name.value;
-            number = document.form.user_number.value;
-            password = document.form.password.value;
-            confirm_password = document.form.confirm_password.value;
+            var your_name = document.form.your_name.value;
+            var user_name = document.form.user_name.value;
+            var email = document.form.email.value;
+            var number = document.form.user_number.value;
+            var password = document.form.password.value;
+            var confirm_password = document.form.confirm_password.value;
 
-            if(fname === "" || lname === "" || number === "" || password === "" || confirm_password === ""){
+            if(your_name === "" || user_name === "" || email === "" || number === "" || password === "" || confirm_password === ""){
                 alert("Enter Required Input");
                 return false;
             }
-            if(password == confirm){
-                alert("registerd");
-                alert("Successfully Submit");
+            if(password !== confirm_password){
+                alert("Passwords do not match");
+                return false;
             }
-            else{
-                alert("not matched");
-            }
-            
+            alert("Successfully Registered!");
+            return true;
         }
+
         function num(p){
-            ascii=p.keyCode;
+            var ascii = p.which || p.keyCode;
             if(ascii >= 48 && ascii <= 57){
-                return true;
-            }
-            else{
-                alert("Wrong credentails");
-                return false;
-            }
-        }
-        function chr(e) {
-            ascii = e.keyCode;
-            //alert(ascii);
-            if(((ascii >= 65) && (ascii <= 90)) || ((ascii >= 97) && (ascii <= 120))){
-                return true;
-            }
-            else{
-                alert("Wrong Value");
-                return false; 
-            }
-        }
-        function roll(r){
-            keys=r.keyCode;
-            if(keys >= 48 && keys <= 57){
-                if (document.getElementById("rollNumber").value.length >= 4) {
-                alert("Roll number must be 4 digits only.");
-                return false;
-                }
                 return true;
             }
             else{
                 alert("Only numbers are allowed");
                 return false;
-            } 
+            }
+        }
+
+        function chr(e) {
+            var ascii = e.which || e.keyCode;
+            if((ascii >= 65 && ascii <= 90) || (ascii >= 97 && ascii <= 122) || ascii === 32){
+                return true;
+            }
+            else{
+                alert("Only letters and spaces are allowed");
+                return false; 
+            }
         }
     </script>
 </body>
+</html>
