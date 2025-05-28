@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Calculator</title>
+</head>
+<body>
+    <!--Menus-->
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html.html">Registration Form</a></li>
+            <li><a href="student_form.html">Student Form</a></li>
+            <li><a href="calculator.html">Calculator</a></li>
+            <li><a href="min_max.html">Min & Max</a></li>
+            <li><a href="table_number.html">Table</a></li>
+        </ul>
+    </nav>
+  
+
+    <!--Calculator-->
+    <div class="form-container">
+        <h1 style="text-align: center;">Calculator</h1>
+        <form name="calculator" method="post">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>First Value*</label>
+                    <input type="text" name="first_value" id="firstValue" maxlength="4" placeholder="Enter First Value" onkeypress="return num(event);">
+                </div>
+                <div class="form-group">   
+                    <label>Second Value*</label>
+                    <input type="text" name="second_value"  maxlength="4" placeholder="Enter Second Value" onkeypress="return num(event);">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Operation*</label>
+                    <select name="operations" id="operation">
+                        <option value="">-- Select Operation --</option>
+                        <option value="+">Addition (+)</option>
+                        <option value="-">Subtraction (−)</option>
+                        <option value="*">Multiplication (×)</option>
+                        <option value="/">Division (÷)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row btn">
+                <button type="button" onclick="mycalculate(document.getElementById('operation').value);">Calculate</button>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <input type="text" name="result" readonly>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+<script>
+   function mycalculate(op){
+        firstValue = parseInt(document.calculator.first_value.value);
+        secondValue = parseInt(document.calculator.second_value.value);
+        operationValue = document.getElementById('operation').value;
+        
+        if(firstValue === "" || secondValue === "" || operationValue === ""){
+            alert("Enter required Value");
+            document.calculator.first_value.focus();
+            return false;
+        }
+        if(operationValue == "+"){
+            Result = firstValue + secondValue;
+        }
+        else if(operationValue == "-"){
+            Result = firstValue - secondValue;
+        }
+        else if(operationValue == "*"){
+            Result = firstValue * secondValue;
+        }
+        else if(operationValue == "/"){
+            Result = firstValue / secondValue;
+        }
+        else{
+            alert("Please Select one Operation");
+        }
+        document.calculator.result.value = firstValue + " " + operationValue + " "+ secondValue + " = " + (Result);
+        alert(firstValue + " " + operationValue + " "+ secondValue + " = " + (Result));
+    }
+    function num(n){
+        keys=n.keyCode;
+        if(keys >= 48 && keys <= 57){
+            return true;
+        } 
+        else{
+            alert("Wrong");
+            return false;
+        }
+        
+    }
+</script>
+</html>
