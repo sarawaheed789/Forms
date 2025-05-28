@@ -18,7 +18,7 @@
     <!--Registration Form-->
 
     <div class="form-container">
-        <h1 style="text-align: center;">Student Form</h1>
+        <h1 style="text-align: center;">Registration Form</h1>
         <form name="form" method="post" action="" onsubmit="return checkValue();">
             <div class="form-row">
                 <div class="form-group">
@@ -68,13 +68,13 @@
     </div>
     <script>
         function checkValue(){
-            //fname = document.form.first_name.value;
-            //lname = document.form.last_name.value;
-            //number = document.form.user_number.value;
+            fname = document.form.first_name.value;
+            lname = document.form.last_name.value;
+            number = document.form.user_number.value;
             password = document.form.password.value;
-            confirm = document.form.confirm_password.value;
+            confirm_password = document.form.confirm_password.value;
 
-            if(password === "" || confirm === ""){
+            if(fname === "" || lname === "" || number === "" || password === "" || confirm_password === ""){
                 alert("Enter Required Input");
                 return false;
             }
